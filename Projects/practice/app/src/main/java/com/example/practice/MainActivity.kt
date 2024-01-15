@@ -1,18 +1,19 @@
 package com.example.practice
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.practice.ui.theme.PracticeTheme
 
+const val TAG = "MainActivity"
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,18 +24,24 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    Greeting("Android");
+                    AddTestBtn();
+
+
+                    basicSyntaxTest();
                 }
             }
         }
     }
 }
 
+
+
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Surface(
         modifier = modifier,
-        color = Color.Gray,
+//        color = Color.White,
     ){
         Text(
             text = "Hello $name!",
@@ -42,10 +49,28 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     }
 }
 
-@Preview()
 @Composable
-fun GreetingPreview() {
-    PracticeTheme {
-        Greeting("Android")
+fun AddTestBtn(){
+    Button(onClick = {
+        Log.i(TAG, "AddTestBtn: onClick")
+    }) {
+        Text(
+            text = "test btn",
+        )
     }
 }
+
+
+fun basicSyntaxTest() {
+    val bs : KotlinBasicSyntax = KotlinBasicSyntax();
+    bs.doTest();
+}
+
+
+//@Preview()
+//@Composable
+//fun GreetingPreview() {
+//    PracticeTheme {
+//        Greeting("Android")
+//    }
+//}
