@@ -53,6 +53,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 fun AddTestBtn(){
     Button(onClick = {
         Log.i(TAG, "AddTestBtn: onClick")
+        Runtime.getRuntime().exit(0);
     }) {
         Text(
             text = "test btn",
@@ -62,8 +63,11 @@ fun AddTestBtn(){
 
 
 fun basicSyntaxTest() {
-    val bs : KotlinBasicSyntax = KotlinBasicSyntax();
-    bs.doTest();
+    val ks : KotlinBasicSyntax = KotlinBasicSyntax()
+//    ks.doTest()
+
+    val js : JavaBasicSyntax = JavaBasicSyntax()
+//    js.doTest()
 }
 
 
