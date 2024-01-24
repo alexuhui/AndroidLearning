@@ -31,11 +31,6 @@ public class FirstActivity extends Activity {
         });
     }
 
-    public void onNextPageClick()
-    {
-
-    }
-
     public void onNextPageClick(View view) {
         Context context = view.getContext();
         Intent intent = new Intent(context, SecondActivity.class);
