@@ -3,6 +3,7 @@ package com.example.practice
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.provider.ContactsContract.Contacts.Photo
 import android.util.Log
 import android.widget.Button
 import androidx.activity.ComponentActivity
@@ -11,6 +12,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import com.example.practice.camera.PhotoAlbum
 import com.example.practice.main.FirstActivity
 import com.example.practice.main.SecondActivity
 
@@ -52,6 +54,12 @@ class MainActivity : ComponentActivity() {
         findViewById<Button>(R.id.secondPageBtn)
             .setOnClickListener{
                 val intent: Intent = Intent(this, SecondActivity::class.java)
+                this.startActivity(intent)
+            }
+
+        findViewById<Button>(R.id.photoAlbumBtn)
+            .setOnClickListener{
+                val intent : Intent = Intent(this, PhotoAlbum::class.java)
                 this.startActivity(intent)
             }
     }

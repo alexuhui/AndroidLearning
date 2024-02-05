@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.practice.R;
+import com.example.practice.camera.CameraPermission;
 
 public class FirstActivity extends Activity {
     private final static  String TAG = "FirstActivity";
