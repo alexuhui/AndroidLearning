@@ -16,6 +16,13 @@
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
+                <!--
+                其中intent-filter里的两行代码非常重要，
+                <actionandroid:name="android.intent.action.MAIN"/> 和
+                <categoryandroid:name="android.intent.category.LAUNCHER" />
+                表示MainActivity是  这个项目的主Activity，
+                在手机上点击应用图标，首先启动的就是这个Activity。
+                -->
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
