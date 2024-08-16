@@ -2,6 +2,7 @@ package com.example.firstlineandroidcode
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 
 /**
  * Activity是Android应用程序的门面，凡是在应用中你看得到的东西，都是放在Activity中的。
@@ -9,9 +10,12 @@ import android.os.Bundle
  * @see AppCompatActivity
  **/
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // 引入布局文件
         setContentView(R.layout.activity_main)
+
+        Log.d("MainActivity", "onCreate")
     }
 }
