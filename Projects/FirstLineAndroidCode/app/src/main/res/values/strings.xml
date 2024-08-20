@@ -4,4 +4,5 @@
     ● 在XML中通过@string/app_name可以获得该字符串的引用。
     -->
     <string name="app_name">第一行Android代码</string>
+    <string name="first_activity">第一行Android代码</string>
 </resources>

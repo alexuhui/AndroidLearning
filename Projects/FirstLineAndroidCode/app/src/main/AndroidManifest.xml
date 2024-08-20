@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.firstlineandroidcode"
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
@@ -10,23 +11,34 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.FirstLineAndroidCode"
+        android:theme="@style/Theme.AppCompat.DayNight"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".FirstActivity"
+            android:label="@string/first_activity"
             android:exported="true">
             <intent-filter>
-                <!--
-                其中intent-filter里的两行代码非常重要，
-                <actionandroid:name="android.intent.action.MAIN"/> 和
-                <categoryandroid:name="android.intent.category.LAUNCHER" />
-                表示MainActivity是  这个项目的主Activity，
-                在手机上点击应用图标，首先启动的就是这个Activity。
-                -->
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+<!--            <intent-filter>-->
+
+<!--                &lt;!&ndash;-->
+<!--                其中intent-filter里的两行代码非常重要，-->
+<!--                <actionandroid:name="android.intent.action.MAIN"/> 和-->
+<!--                <categoryandroid:name="android.intent.category.LAUNCHER" />-->
+<!--                表示MainActivity是  这个项目的主Activity，-->
+<!--                在手机上点击应用图标，首先启动的就是这个Activity。-->
+<!--                &ndash;&gt;-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
     </application>
 
