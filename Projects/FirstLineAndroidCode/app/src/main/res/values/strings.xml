@@ -5,4 +5,6 @@
     -->
     <string name="app_name">第一行Android代码</string>
     <string name="first_activity">第一行Android代码</string>
+    <string name="baidu">百度一下</string>
+    <string name="call">打个电话</string>
 </resources>

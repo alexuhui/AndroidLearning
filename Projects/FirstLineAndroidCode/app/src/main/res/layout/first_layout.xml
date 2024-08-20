@@ -15,4 +15,16 @@
         android:layout_height="wrap_content"
         android:text="implicit" />
 
+    <Button
+        android:id="@+id/baidu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/baidu" />
+
+    <Button
+        android:id="@+id/call"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/call" />
+
 </LinearLayout>
