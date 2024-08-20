@@ -27,8 +27,6 @@ class FirstActivity : AppCompatActivity() {
         val button1: Button = findViewById(R.id.button1)
         val data:String = "data from FirstActivity"
 
-
-
         button1.setOnClickListener {
             val intent = Intent(this, SecondActivity::class.java)
             intent.putExtra("ex", data)
