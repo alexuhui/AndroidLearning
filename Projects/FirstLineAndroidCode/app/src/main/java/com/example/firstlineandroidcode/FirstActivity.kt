@@ -1,5 +1,6 @@
 package com.example.firstlineandroidcode
 
+import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -8,15 +9,32 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 
 class FirstActivity : AppCompatActivity() {
+
+    private val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+        if(it.data != null && it.resultCode == Activity.RESULT_OK){
+            Toast.makeText(this, "Result OK! ${it.data?.getStringExtra("ex")}", Toast.LENGTH_SHORT).show()
+        }else{
+            Toast.makeText(this, "Result Error!", Toast.LENGTH_SHORT).show()
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.first_layout)
         val button1: Button = findViewById(R.id.button1)
+        val data:String = "data from FirstActivity"
+
+
+
         button1.setOnClickListener {
             val intent = Intent(this, SecondActivity::class.java)
-            startActivity(intent)
+            intent.putExtra("ex", data)
+//            startActivity(intent)
+            // 带返回参数的启动Activity
+            launcher.launch(intent)
         }
 
         val implicit: Button = findViewById(R.id.implicit)
@@ -40,6 +58,8 @@ class FirstActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
 //        return super.onCreateOptionsMenu(menu)
