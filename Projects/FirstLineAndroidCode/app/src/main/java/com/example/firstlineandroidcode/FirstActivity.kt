@@ -62,7 +62,13 @@ class FirstActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        Log.d(Tag, "onCreate")
+        val reopen : Button = findViewById(R.id.reopen)
+        reopen.setOnClickListener(){
+            val intent = Intent(this, FirstActivity::class.java)
+            startActivity(intent)
+        }
+
+        Log.d(Tag, "onCreate $this    taskId = $taskId")
     }
 
 
@@ -87,7 +93,7 @@ class FirstActivity : AppCompatActivity() {
      */
     override fun onStart() {
         super.onStart()
-        Log.d(Tag, "onStart")
+        Log.d(Tag, "onStart $this")
     }
 
     /**
@@ -96,7 +102,7 @@ class FirstActivity : AppCompatActivity() {
      */
     override fun onResume() {
         super.onResume()
-        Log.d(Tag, "onResume")
+        Log.d(Tag, "onResume $this")
     }
 
     /**
@@ -106,7 +112,7 @@ class FirstActivity : AppCompatActivity() {
      * */
     override fun onPause() {
         super.onPause()
-        Log.d(Tag, "onPause")
+        Log.d(Tag, "onPause $this")
     }
 
     /**
@@ -116,7 +122,7 @@ class FirstActivity : AppCompatActivity() {
      * */
     override fun onStop() {
         super.onStop()
-        Log.d(Tag, "onStop")
+        Log.d(Tag, "onStop $this")
     }
 
     /**
@@ -124,7 +130,7 @@ class FirstActivity : AppCompatActivity() {
      * */
     override fun onDestroy() {
         super.onDestroy()
-        Log.d(Tag, "onDestroy")
+        Log.d(Tag, "onDestroy $this      taskId = $taskId")
     }
 
     /**
@@ -132,6 +138,6 @@ class FirstActivity : AppCompatActivity() {
      * */
     override fun onRestart() {
         super.onRestart()
-        Log.d(Tag, "onRestart")
+        Log.d(Tag, "onRestart $this")
     }
 }

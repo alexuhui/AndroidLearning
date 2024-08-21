@@ -22,6 +22,7 @@
             android:exported="false" />
         <activity
             android:name=".ThirdActivity"
+            android:launchMode="standard"
             android:exported="true">
             <intent-filter tools:ignore="AppLinkUrlError">
                 <action android:name="android.intent.action.VIEW" />
@@ -33,6 +34,7 @@
         </activity>
         <activity
             android:name=".SecondActivity"
+            android:launchMode="standard"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.example.firstlineandroidcode.ACTION_START" />
@@ -41,34 +43,41 @@
                 <category android:name="com.example.firstlineandroidcode.MY_CATEGORY" />
             </intent-filter>
         </activity>
+
+<!--
+        android:launchMode="standard"  默认。系统始终会在目标任务中创建新的 activity 实例，并向其传送 intent。系统不会在乎这个Activity是否已经在返回栈中存在，每次启动都会创建一个该Activity的新实例。
+        android:launchMode="singleTop"  当Activity的启动模式指定为singleTop，在启动Activity时如果发现返回栈的栈顶已经是该Activity，则认为可以直接使用它，不会再创建新的Activity实例。
+        android:launchMode="singleTask" 当Activity的启动模式指定为singleTask，每次启动该Activity时，系统首先会在返回栈中检查是否存在该Activity的实例，如果发现已经存在则直接使用该实例，并把在这个Activity之上的所有其他Activity统统出栈，如果没有发现就会创建一个新的Activity实例。
+        android:launchMode="singleInstance" 指定为singleInstance模式的Activity会启用一个新的返回栈来管理这个Activity（其实如果singleTask模式指定了不同的taskAffinity，也会启动一个新的返回栈）。
+        android:launchMode="singleInstancePerTask"  此 activity 只能作为任务的根 activity、作为创建该任务的第一个 activity 运行，因此在任务中该 activity 只有一个实例。但是 activity 可以在不同的任务中多次实例化。
+-->
         <activity
             android:name=".FirstActivity"
             android:exported="true"
+            android:launchMode="singleInstancePerTask"
             android:label="@string/first_activity">
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
+             <intent-filter>
+             <action android:name="android.intent.action.MAIN" />
+             <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">
-            <intent-filter>
+<!--            <intent-filter>-->
 
-                <!--
-             其中intent-filter里的两行代码非常重要，
-             <actionandroid:name="android.intent.action.MAIN"/> 和
-             <categoryandroid:name="android.intent.category.LAUNCHER" />
-             表示MainActivity是  这个项目的主Activity，
-             在手机上点击应用图标，首先启动的就是这个Activity。
-                -->
-                <action android:name="android.intent.action.MAIN" />
+<!--                &lt;!&ndash;-->
+<!--             其中intent-filter里的两行代码非常重要，-->
+<!--             <actionandroid:name="android.intent.action.MAIN"/> 和-->
+<!--             <categoryandroid:name="android.intent.category.LAUNCHER" />-->
+<!--             表示MainActivity是  这个项目的主Activity，-->
+<!--             在手机上点击应用图标，首先启动的就是这个Activity。-->
+<!--                &ndash;&gt;-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
     </application>
 

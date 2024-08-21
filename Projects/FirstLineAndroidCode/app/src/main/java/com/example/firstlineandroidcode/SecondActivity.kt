@@ -8,21 +8,33 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 
-private const val TAG = "SecondActivity"
 class SecondActivity : AppCompatActivity() {
+    private val tag = "SecondActivity"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.second_layout)
 
         val button2 :Button = findViewById(R.id.button2)
         val data : String? = intent.getStringExtra("ex")
-        Log.d(TAG, "onCreate: data = $data")
+        Log.d(tag, "onCreate $this  data = $data  taskId = $taskId")
         if(data != null){
             Toast.makeText(this, data.toString(), Toast.LENGTH_SHORT).show()
         }
 
         button2.setOnClickListener {
             close()
+        }
+
+        val open3 : Button = findViewById(R.id.open3)
+        open3.setOnClickListener(){
+            val intent = Intent(this, ThirdActivity::class.java)
+            startActivity(intent)
+        }
+
+        val reopen : Button = findViewById(R.id.reopen)
+        reopen.setOnClickListener(){
+            val intent = Intent(this, FirstActivity::class.java)
+            startActivity(intent)
         }
 
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true){
@@ -44,7 +56,7 @@ class SecondActivity : AppCompatActivity() {
      */
     override fun onStart() {
         super.onStart()
-        Log.d(TAG, "onStart")
+        Log.d(tag, "onStart")
     }
 
     /**
@@ -53,7 +65,7 @@ class SecondActivity : AppCompatActivity() {
      */
     override fun onResume() {
         super.onResume()
-        Log.d(TAG, "onResume")
+        Log.d(tag, "onResume")
     }
 
     /**
@@ -63,7 +75,7 @@ class SecondActivity : AppCompatActivity() {
      * */
     override fun onPause() {
         super.onPause()
-        Log.d(TAG, "onPause")
+        Log.d(tag, "onPause")
     }
 
     /**
@@ -73,7 +85,7 @@ class SecondActivity : AppCompatActivity() {
      * */
     override fun onStop() {
         super.onStop()
-        Log.d(TAG, "onStop")
+        Log.d(tag, "onStop")
     }
 
     /**
@@ -81,7 +93,7 @@ class SecondActivity : AppCompatActivity() {
      * */
     override fun onDestroy() {
         super.onDestroy()
-        Log.d(TAG, "onDestroy")
+        Log.d(tag, "onDestroy    taskId = $taskId")
     }
 
     /**
@@ -89,6 +101,6 @@ class SecondActivity : AppCompatActivity() {
      * */
     override fun onRestart() {
         super.onRestart()
-        Log.d(TAG, "onRestart")
+        Log.d(tag, "onRestart")
     }
 }
