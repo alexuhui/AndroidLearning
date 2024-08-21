@@ -68,6 +68,11 @@ class FirstActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val open2static :Button = findViewById(R.id.open2by_static)
+        open2static.setOnClickListener(){
+            SecondActivity.actionStart(this, "data1 from first activity", "data2 from first activity")
+        }
+
         Log.d(Tag, "onCreate $this    taskId = $taskId")
     }
 
