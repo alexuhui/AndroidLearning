@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.firstlineandroidcode.R
 
 class WidgetActivity : AppCompatActivity(), View.OnClickListener {
@@ -68,11 +69,25 @@ class WidgetActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.progressAddBtn ->{
                 var progressBar:ProgressBar = findViewById(R.id.progressBar2)
-                var p = progressBar.progress + 10
-                if(p > 100) p = 0
-                progressBar.progress = p
-
-                Log.d(tag, "onClick: progressBar.progress = ${progressBar.progress}")
+                var p = progressBar.progress + 20
+                if(p > 100) {
+                    AlertDialog.Builder(this).apply {
+                        setTitle("progress is larger than 100")
+                        setMessage("progress will back to 0. are you sure?")
+                        setCancelable(false)
+                        setPositiveButton("OK"){ dialog, which ->
+                            p = 0
+                            progressBar.progress = p
+                            Toast.makeText(applicationContext,
+                                "999999", Toast.LENGTH_SHORT).show()
+                        }
+                        setNegativeButton("Cancel"){ _, _ -> }
+                        show()
+                    }
+                }else{
+                    progressBar.progress = p
+                    Log.d(tag, "onClick: progressBar.progress = ${progressBar.progress}")
+                }
             }
         }
     }
