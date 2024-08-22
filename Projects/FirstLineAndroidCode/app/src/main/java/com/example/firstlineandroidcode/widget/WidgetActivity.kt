@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.Toast
 import com.example.firstlineandroidcode.R
 
@@ -26,6 +27,12 @@ class WidgetActivity : AppCompatActivity(), View.OnClickListener {
 
         val switchImg : Button = findViewById(R.id.switch_img)
         switchImg.setOnClickListener(this)
+
+        val progressBtn : Button = findViewById(R.id.progressBtn)
+        progressBtn.setOnClickListener(this)
+
+        var progressAddBtn : Button = findViewById(R.id.progressAddBtn)
+        progressAddBtn.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -51,6 +58,21 @@ class WidgetActivity : AppCompatActivity(), View.OnClickListener {
 
                 index++
                 index %= 5
+            }
+            R.id.progressBtn ->{
+                val progressBar:ProgressBar = findViewById(R.id.progressBar)
+                when(progressBar.visibility){
+                    View.VISIBLE -> progressBar.visibility = View.GONE
+                    View.GONE -> progressBar.visibility = View.VISIBLE
+                }
+            }
+            R.id.progressAddBtn ->{
+                var progressBar:ProgressBar = findViewById(R.id.progressBar2)
+                var p = progressBar.progress + 10
+                if(p > 100) p = 0
+                progressBar.progress = p
+
+                Log.d(tag, "onClick: progressBar.progress = ${progressBar.progress}")
             }
         }
     }
