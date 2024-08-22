@@ -50,11 +50,11 @@ class WidgetActivity : AppCompatActivity(), View.OnClickListener {
             R.id.switch_img ->{
                 val imgView : ImageView = findViewById(R.id.image)
                 when(index) {
-                    0 -> imgView.setImageResource(R.drawable.eagle_shadow)
-                    1 -> imgView.setImageResource(R.drawable.dog_shadow)
-                    2 -> imgView.setImageResource(R.drawable.dolphin_shadow)
-                    3 -> imgView.setImageResource(R.drawable.eagle_shadow)
-                    4 -> imgView.setImageResource(R.drawable.panda_shadow)
+                    0 -> imgView.setImageResource(R.drawable.apple)
+                    1 -> imgView.setImageResource(R.drawable.cherry)
+                    2 -> imgView.setImageResource(R.drawable.watermelon)
+                    3 -> imgView.setImageResource(R.drawable.durian)
+                    4 -> imgView.setImageResource(R.drawable.lemon)
                 }
 
                 index++
