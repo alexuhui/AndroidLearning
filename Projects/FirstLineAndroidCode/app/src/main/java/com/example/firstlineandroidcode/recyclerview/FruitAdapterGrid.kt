@@ -8,13 +8,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firstlineandroidcode.R
 
-class FruitAdapter(private val fruitList: List<FruitItem>) : RecyclerView.Adapter<FruitAdapter.ViewHolder>() {
+class FruitAdapterGrid(private val fruitList: List<FruitItem>) : RecyclerView.Adapter<FruitAdapterGrid.ViewHolder>() {
 
-    private var itemLayout : Int = R.layout.fruit
+    private var itemLayout : Int = R.layout.fruit_grid
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val fruitImage: ImageView = view.findViewById(R.id.fruitImage)
-        val fruitName: TextView = view.findViewById(R.id.fruitName)
+        val fruitImage: ImageView = view.findViewById(R.id.fruitImage3)
+        val fruitName: TextView = view.findViewById(R.id.fruitName3)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

@@ -4,8 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.firstlineandroidcode.R
-import com.example.firstlineandroidcode.listview.AnimalItem
 
 class RecyclerViewActivity : AppCompatActivity() {
 
@@ -34,5 +34,16 @@ class RecyclerViewActivity : AppCompatActivity() {
         recyclerView.layoutManager = layoutManager
         val adapter = FruitAdapter(fruits)
         recyclerView.adapter = adapter
+
+        val layoutManagerStaggeredGrid = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
+        val recyclerViewStaggerGrid : RecyclerView = findViewById(R.id.recyclerViewStaggeredGrid)
+        recyclerViewStaggerGrid.layoutManager = layoutManagerStaggeredGrid
+        val newFruits = ArrayList<FruitItem>()
+        for (f in fruits){
+            var name = f.name.repeat((1 .. 20).random())
+            newFruits.add(FruitItem(name, f.image))
+        }
+        val adapterGrid = FruitAdapterGrid(newFruits)
+        recyclerViewStaggerGrid.adapter = adapterGrid
     }
 }
