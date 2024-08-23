@@ -2,6 +2,7 @@ package com.example.firstlineandroidcode.recyclerview
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -35,6 +36,12 @@ class RecyclerViewActivity : AppCompatActivity() {
         val adapter = FruitAdapter(fruits)
         recyclerView.adapter = adapter
 
+        val layoutManagerGrid = GridLayoutManager(this, 3)
+        val adapterGrid = FruitAdapterGrid(fruits)
+        val recyclerViewGrid : RecyclerView = findViewById(R.id.recyclerViewGrid)
+        recyclerViewGrid.layoutManager = layoutManagerGrid
+        recyclerViewGrid.adapter = adapterGrid
+
         val layoutManagerStaggeredGrid = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
         val recyclerViewStaggerGrid : RecyclerView = findViewById(R.id.recyclerViewStaggeredGrid)
         recyclerViewStaggerGrid.layoutManager = layoutManagerStaggeredGrid
@@ -43,7 +50,7 @@ class RecyclerViewActivity : AppCompatActivity() {
             var name = f.name.repeat((1 .. 20).random())
             newFruits.add(FruitItem(name, f.image))
         }
-        val adapterGrid = FruitAdapterGrid(newFruits)
-        recyclerViewStaggerGrid.adapter = adapterGrid
+        val adapterStaggerGrid = FruitAdapterGrid(newFruits)
+        recyclerViewStaggerGrid.adapter = adapterStaggerGrid
     }
 }

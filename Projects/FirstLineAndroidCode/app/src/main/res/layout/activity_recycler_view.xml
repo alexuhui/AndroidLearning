@@ -10,9 +10,19 @@
         android:background="@drawable/edit_bg"/>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewGrid"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/edit_bg"/>
+
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewStaggeredGrid"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/edit_bg"/>
 
 </LinearLayout>
