@@ -6,7 +6,7 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import com.example.firstlineandroidcode.R
 
-class FragmentActivity : AppCompatActivity() {
+class FragmentTestActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fragment)

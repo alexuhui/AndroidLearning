@@ -27,7 +27,7 @@
             android:exported="false">
         </activity>
         <activity
-            android:name=".fragment.FragmentActivity"
+            android:name=".fragment.FragmentTestActivity"
             android:exported="true">
 
 <!--             <intent-filter>-->

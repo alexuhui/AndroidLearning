@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,7 +15,6 @@ import com.example.firstlineandroidcode.R
 class NewsTitleFragment : Fragment() {
     private val TAG = "NewsTitleFragment"
     private var isTwoPane = false
-    private lateinit var mView : View
 
     inner class NewsAdapter(val newsList: List<News>) :
         RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
@@ -55,11 +55,44 @@ class NewsTitleFragment : Fragment() {
 //    override fun onActivityCreated(savedInstanceState: Bundle?) {
 //        super.onActivityCreated(savedInstanceState)
 //        isTwoPane = activity?.findViewById<View>(R.id.newsContentLayout) != null
+//        Log.d(TAG, "onActivityCreated: isTwoPane = $isTwoPane")
 //        val layoutManager = LinearLayoutManager(activity)
-//        newsTitleRecyclerView.layoutManager = layoutManager
+//        val newsTitleRecyclerView : RecyclerView? = activity?.findViewById(R.id.newsTitleRecyclerView)
+//        newsTitleRecyclerView?.layoutManager = layoutManager
 //        val adapter = NewsAdapter(getNews())
-//        newsTitleRecyclerView.adapter = adapter
+//        newsTitleRecyclerView?.adapter = adapter
 //    }
+
+//    override fun  onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//        isTwoPane = activity?.findViewById<View>(R.id.newsContentLayout) != null
+//        Log.d(TAG, "onViewCreated: isTwoPane = $isTwoPane")
+//        val layoutManager = LinearLayoutManager(activity)
+//        val newsTitleRecyclerView : RecyclerView? = activity?.findViewById(R.id.newsTitleRecyclerView)
+//        newsTitleRecyclerView?.layoutManager = layoutManager
+//        val adapter = NewsAdapter(getNews())
+//        newsTitleRecyclerView?.adapter = adapter
+//    }
+
+    /**
+     * 这里是个坑
+     * 书上用的是 onActivityCreated ，但这个方法已过期
+     * 网上看到替代方案都是 onViewCreated，但这个方法是获取不到 newsContentLayout 的
+     * *** 根据api注释（before any saved state has been restored in to the view.）
+     * *** 这个方法没有保存任何状态，可能是这个问题，顺势看到一个 onViewStateRestored
+     * 使用 onViewStateRestored 发现终于一切正常
+     * */
+    override fun onViewStateRestored(savedInstanceState: Bundle?)
+    {
+        super.onViewStateRestored(savedInstanceState)
+        isTwoPane = activity?.findViewById<View>(R.id.newsContentLayout) != null
+        Log.d(TAG, "onViewStateRestored: isTwoPane = $isTwoPane")
+        val layoutManager = LinearLayoutManager(activity)
+        val newsTitleRecyclerView : RecyclerView? = activity?.findViewById(R.id.newsTitleRecyclerView)
+        newsTitleRecyclerView?.layoutManager = layoutManager
+        val adapter = NewsAdapter(getNews())
+        newsTitleRecyclerView?.adapter = adapter
+    }
 
     private fun getNews(): List<News> {
         val newsList = ArrayList<News>()
@@ -81,21 +114,21 @@ class NewsTitleFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        mView = inflater.inflate(R.layout.news_title_frag, container, false)
-        Log.d(TAG, "onCreateView: mView = $mView")
-        return mView
+        val flag = inflater.inflate(R.layout.news_title_frag, container, false)
+        Log.d(TAG, "onCreateView: flag = $flag")
+        return flag
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        Log.d(TAG, "onViewCreated: mView = $mView")
-        val fragmentLayout : Fragment? = activity?.supportFragmentManager?.findFragmentById(R.id.newsContentLayout)
-        isTwoPane = fragmentLayout != null
-        val layoutManager = LinearLayoutManager(activity)
-        val newsTitleRecyclerView : RecyclerView = mView.findViewById(R.id.newsTitleRecyclerView)
-        newsTitleRecyclerView.layoutManager = layoutManager
-        val adapter = NewsAdapter(getNews())
-        newsTitleRecyclerView.adapter = adapter
-    }
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//        Log.d(TAG, "onViewCreated: mView = $mView")
+////        val fragmentLayout : FrameLayout = mView.findViewById(R.id.newsContentLayout)
+//        isTwoPane = activity?.findViewById<View>(R.id.newsContentLayout) != null//fragmentLayout != null
+//        val layoutManager = LinearLayoutManager(activity)
+//        val newsTitleRecyclerView : RecyclerView = mView.findViewById(R.id.newsTitleRecyclerView)
+//        newsTitleRecyclerView.layoutManager = layoutManager
+//        val adapter = NewsAdapter(getNews())
+//        newsTitleRecyclerView.adapter = adapter
+//    }
 
 }

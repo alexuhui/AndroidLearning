@@ -2,6 +2,7 @@ package com.example.firstlineandroidcode.fragment
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.FragmentActivity
 import com.example.firstlineandroidcode.R
 
 class NewsMainActivity : AppCompatActivity() {
