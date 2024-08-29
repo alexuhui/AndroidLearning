@@ -14,6 +14,6 @@
         android:id="@+id/permission"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="permission" />
+        android:text="location permission" />
 
 </LinearLayout>

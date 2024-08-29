@@ -47,11 +47,13 @@ class PermissionActivity : AppCompatActivity() {
 
         val permission : Button = findViewById(R.id.permission)
         permission.setOnClickListener(){
-            if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_DENIED){
-                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 3)
-                Log.d(TAG, "permission ACCESS_FINE_LOCATION not be granted")
+            if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_DENIED &&
+                ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_DENIED){
+
+                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION), 3)
+                Log.d(TAG, "permission ACCESS_LOCATION not be granted")
             }else{
-                Log.d(TAG, "permission ACCESS_FINE_LOCATION granted")
+                Log.d(TAG, "permission ACCESS_LOCATION granted, fine : ${ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)}   coarse : ${ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)}")
             }
         }
     }
@@ -63,9 +65,17 @@ class PermissionActivity : AppCompatActivity() {
                 if (grantResults.isNotEmpty() &&
                     grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     call()
+                }
+            }
+
+            3 -> {
+                if (permissions.isNotEmpty()){
+                    for(i in permissions.indices)
+                    {
+                        Log.d(TAG, "onRequestPermissionsResult: P : ${permissions[i]}   result : ${grantResults[i]}")
+                    }
                 } else {
-                    Toast.makeText(this, "You denied the permission",
-                        Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "You denied the permission", Toast.LENGTH_SHORT).show()
                 }
             }
         }
