@@ -3,7 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.firstlineandroidcode">
 
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.LOCATION_HARDWARE"
+        tools:ignore="ProtectedPermissions" />
 
     <application
         android:allowBackup="true"
@@ -16,13 +23,22 @@
         android:theme="@style/Theme.AppCompat.DayNight"
         tools:targetApi="31">
         <activity
-            android:name=".storage.StorageActivity"
+            android:name=".permission.PermissionActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".storage.StorageActivity"
+            android:exported="true">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
 
         <receiver
@@ -53,11 +69,13 @@
         <activity
             android:name=".broadcast.BroadcastActivity"
             android:exported="true">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".fragment.NewsMainActivity"
