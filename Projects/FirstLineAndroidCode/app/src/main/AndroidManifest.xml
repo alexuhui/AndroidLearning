@@ -27,8 +27,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight"
         tools:targetApi="31">
+        <service
+            android:name=".service.MyService"
+            android:enabled="true"
+            android:exported="true">
+        </service>
+
         <activity
-            android:name=".video.PlayVideoActivity"
+            android:name=".service.ServiceActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,13 +43,35 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".audio.PlayAudioActivity"
+            android:name=".thread.AndroidThreadActivity"
             android:exported="true">
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->
 
 <!--                <category android:name="android.intent.category.LAUNCHER" />-->
 <!--            </intent-filter>-->
+        </activity>
+        <activity
+            android:name=".video.PlayVideoActivity"
+            android:exported="true">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity
+            android:name=".audio.PlayAudioActivity"
+            android:exported="true">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
 
         <provider
