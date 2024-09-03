@@ -17,10 +17,18 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
+
+<!--
+如果只是访问明文 http
+实测
+按书中的做法是添加 network_config.xml配置再 设置 android:networkSecurityConfig="@xml/network_config"
+其实：application 加一条配置也可以 android:usesCleartextTraffic="true"
+ -->
     <application
         android:allowBackup="true"
+        android:networkSecurityConfig="@xml/network_config"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -30,7 +38,7 @@
         android:theme="@style/Theme.AppCompat.DayNight"
         tools:targetApi="31">
         <activity
-            android:name=".webview.WebViewActivity"
+            android:name=".http_xml_json.NetworkActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,22 +46,33 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <service
-            android:name=".service.MyService"
-            android:enabled="true"
-            android:exported="true"
-            android:foregroundServiceType="location"
-            tools:ignore="ForegroundServicePermission"></service>
-
         <activity
-            android:name=".service.ServiceActivity"
+            android:name=".webview.WebViewActivity"
             android:exported="true">
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->
 
 <!--                <category android:name="android.intent.category.LAUNCHER" />-->
 <!--            </intent-filter>-->
+        </activity>
+
+        <service
+            android:name=".service.MyService"
+            android:enabled="true"
+            android:exported="true"
+            android:foregroundServiceType="location"
+            tools:ignore="ForegroundServicePermission" />
+
+        <activity
+            android:name=".service.ServiceActivity"
+            android:exported="true">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".thread.AndroidThreadActivity"

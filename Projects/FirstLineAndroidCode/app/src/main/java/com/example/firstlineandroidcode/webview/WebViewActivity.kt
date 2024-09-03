@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import com.example.firstlineandroidcode.R
+import java.net.HttpURLConnection
+import java.net.URL
 
 class WebViewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
