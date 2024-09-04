@@ -19,26 +19,20 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
-
-<!--
-如果只是访问明文 http
-实测
-按书中的做法是添加 network_config.xml配置再 设置 android:networkSecurityConfig="@xml/network_config"
-其实：application 加一条配置也可以 android:usesCleartextTraffic="true"
- -->
     <application
         android:allowBackup="true"
-        android:networkSecurityConfig="@xml/network_config"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.DayNight"
+        android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
-            android:name=".http_xml_json.NetworkActivity"
+            android:name=".materialdesign.MaterialDesignActivity"
+            android:label="@string/app_name2"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,13 +41,24 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".webview.WebViewActivity"
+            android:name=".http_xml_json.NetworkActivity"
             android:exported="true">
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->
 
 <!--                <category android:name="android.intent.category.LAUNCHER" />-->
 <!--            </intent-filter>-->
+        </activity>
+        <activity
+            android:name=".webview.WebViewActivity"
+            android:exported="true">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
 
         <service
