@@ -31,9 +31,13 @@
         android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
+            android:name=".materialdesign.FruitActivity"
+            android:theme="@style/FruitActivityTheme"
+            android:exported="false" />
+        <activity
             android:name=".materialdesign.MaterialDesignActivity"
-            android:label="@string/app_name2"
-            android:exported="true">
+            android:exported="true"
+            android:label="@string/app_name2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -43,11 +47,13 @@
         <activity
             android:name=".http_xml_json.NetworkActivity"
             android:exported="true">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".webview.WebViewActivity"

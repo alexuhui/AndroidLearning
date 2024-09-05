@@ -81,7 +81,7 @@ class MaterialDesignActivity : AppCompatActivity() {
         recyclerView.layoutManager = layoutManager
         /**
          * 给RecyclerView设置适配器
-         * 在适配器中处理item相关的东西，包括item的布局
+         * 在适配器中处理item相关的东西，包括item的布局，item点击事件注册等等
          * */
         val adapter = FruitAdapter2(this, fruitList)
         recyclerView.adapter = adapter
