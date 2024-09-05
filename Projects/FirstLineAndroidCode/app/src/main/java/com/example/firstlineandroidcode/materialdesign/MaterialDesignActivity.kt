@@ -2,6 +2,7 @@ package com.example.firstlineandroidcode.materialdesign
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -9,8 +10,10 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.firstlineandroidcode.R
+import com.google.android.material.navigation.NavigationView
 
 class MaterialDesignActivity : AppCompatActivity() {
+    private val TAG = "MaterialDesign"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_material_design)
@@ -19,6 +22,21 @@ class MaterialDesignActivity : AppCompatActivity() {
         supportActionBar?.let {
             it.setDisplayHomeAsUpEnabled(true)
             it.setHomeAsUpIndicator(R.drawable.ic_menu)
+        }
+
+        val navView : NavigationView = findViewById(R.id.navView)
+        navView.setCheckedItem(R.id.navCall)
+        navView.setNavigationItemSelectedListener {
+           when(it.itemId){
+               R.id.navCall -> Log.d(TAG, "on click: call")
+               R.id.navFriends -> Log.d(TAG, "on click: friends")
+               R.id.navLocation -> Log.d(TAG, "on click: location")
+               R.id.navMail -> Log.d(TAG, "on click: mail")
+               R.id.navTask -> Log.d(TAG, "on click: task")
+           }
+            val  drawerLayout : DrawerLayout = findViewById(R.id.drawerLayout)
+            drawerLayout.closeDrawers()
+            true
         }
     }
 

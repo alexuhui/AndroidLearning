@@ -76,6 +76,9 @@ dependencies {
     implementation ("androidx.work:work-runtime:2.9.1")
     implementation ("com.squareup.okhttp3:okhttp:4.12.0")
     implementation ("com.google.android.material:material:1.12.0")
+    /**
+     * CircleImageView，它可以用来轻松实现图片圆形化的功能
+     * */
     implementation ("de.hdodenhof:circleimageview:3.1.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
