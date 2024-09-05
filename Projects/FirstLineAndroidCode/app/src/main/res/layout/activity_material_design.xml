@@ -6,7 +6,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <FrameLayout
+<!--    <FrameLayout-->
+<!--
+CoordinatorLayout本身就是一个加强版的FrameLayout，因此这种替换不会有任何的副作用
+CoordinatorLayout自动将悬浮按钮上移
+CoordinatorLayout可以监听其所有子控件的各种事件，但是Snackbar好像并不是CoordinatorLayout的子控件吧，
+为什么它却可以被监听到呢？
+其实道理很简单，在Snackbar的make()方法中传入的第一个参数就是用来指定Snackbar是基于哪个View触发的，
+传入的FloatingActionButton是CoordinatorLayout中的子控件，因此这个事件就理所应当能被监听到了。
+换成传其它的就不行
+比如传 navView，悬浮按钮还是会被遮挡
+-->
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -25,14 +36,14 @@
             android:layout_gravity="bottom|end"
             android:layout_margin="16dp"
             android:src="@drawable/ic_done"/>
-    </FrameLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:menu="@menu/nav_menu"
-        app:headerLayout="@layout/nav_header"/>
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/nav_menu" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

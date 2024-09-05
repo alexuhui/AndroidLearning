@@ -13,6 +13,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.example.firstlineandroidcode.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.Snackbar
 
 class MaterialDesignActivity : AppCompatActivity() {
     private val TAG = "MaterialDesign"
@@ -43,7 +44,16 @@ class MaterialDesignActivity : AppCompatActivity() {
 
         val fab : FloatingActionButton = findViewById(R.id.fab)
         fab.setOnClickListener(){
-            finish()
+//            finish()
+            /**
+             * 设置多个action不会报错
+             * 但是只有最后一个生效，前面的被覆盖
+             * */
+            Snackbar.make(it, "Snack bar Test", Snackbar.LENGTH_SHORT).setAction("Action"){
+                Toast.makeText(this, "do action", Toast.LENGTH_SHORT).show()
+            }.setAction("Action 2"){
+                Toast.makeText(this, "do action 2", Toast.LENGTH_SHORT).show()
+            }.show()
         }
     }
 
