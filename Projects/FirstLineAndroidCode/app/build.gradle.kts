@@ -8,6 +8,8 @@ plugins {
      * kotlin插件，使用kotlin语言开发必须的
      * */
     id("org.jetbrains.kotlin.android")
+//    id("kotlin-kapt")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -84,6 +86,10 @@ dependencies {
     implementation ("com.github.bumptech.glide:glide:4.16.0")
     implementation ("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     implementation ("androidx.lifecycle:lifecycle-extensions:2.2.0")
+    implementation("androidx.room:room-runtime:2.1.0")
+//    val room_version = "2.6.1"
+//    kapt("androidx.room:room-compiler:$room_version")
+    ksp("androidx.room:room-compiler:2.6.1")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
