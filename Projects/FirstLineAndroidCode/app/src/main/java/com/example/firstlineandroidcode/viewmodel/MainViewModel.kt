@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.map
+import androidx.lifecycle.switchMap
 
 
 class MainViewModel(countReserved: Int) : ViewModel() {
@@ -79,5 +80,16 @@ class MainViewModel(countReserved: Int) : ViewModel() {
 
             }
         }.start()
+    }
+
+    private val userIdLiveData = MutableLiveData<String>()
+    val user: LiveData<User> = userIdLiveData.switchMap() { userId ->
+        Log.d(TAG, "switchMap: userId = $userId")
+        Repository.getUser(userId)
+    }
+
+    fun getUser(userId: String) {
+        Log.d(TAG, "getUser: userId = $userId")
+        userIdLiveData.value = userId
     }
 }

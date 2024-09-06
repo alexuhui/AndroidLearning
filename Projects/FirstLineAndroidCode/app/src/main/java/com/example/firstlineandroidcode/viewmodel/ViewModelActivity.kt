@@ -76,6 +76,16 @@ class ViewModelActivity : AppCompatActivity() {
             userAge.text = it.toString()
         }
 
+        val getUserBtn : Button = findViewById(R.id.getUserBtn)
+        getUserBtn.setOnClickListener {
+            val userId = (0..10000).random().toString()
+            viewModel.getUser(userId)
+        }
+        viewModel.user.observe(this, Observer { user ->
+            Log.d(TAG, "user Observer user = $user ")
+            infoText.text = user.firstName
+        })
+
         lifecycle.addObserver(MyObserver())
     }
 
