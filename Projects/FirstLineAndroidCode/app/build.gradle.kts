@@ -87,6 +87,7 @@ dependencies {
     implementation ("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     implementation ("androidx.lifecycle:lifecycle-extensions:2.2.0")
     implementation("androidx.room:room-runtime:2.1.0")
+    implementation ("androidx.work:work-runtime:2.2.0")
 //    val room_version = "2.6.1"
 //    kapt("androidx.room:room-compiler:$room_version")
     ksp("androidx.room:room-compiler:2.6.1")
