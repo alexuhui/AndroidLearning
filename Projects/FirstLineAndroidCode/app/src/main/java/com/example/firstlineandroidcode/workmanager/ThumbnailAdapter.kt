@@ -21,8 +21,8 @@ class ThumbnailAdapter(private val fruitList: List<Thumbnail>) : RecyclerView.Ad
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val fruitImage: ImageView = view.findViewById(R.id.fruitImage)
-        val fruitName: TextView = view.findViewById(R.id.fruitName)
+        val fruitImage: ImageView = view.findViewById(R.id.thumbnailImage)
+        val fruitName: TextView = view.findViewById(R.id.imageName)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ThumbnailAdapter.ViewHolder {
