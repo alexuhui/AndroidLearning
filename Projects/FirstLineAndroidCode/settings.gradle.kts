@@ -15,4 +15,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "FirstLineAndroidCode"
 include(":app")
- 
+include(":permissionx")
+include(":testlibrary")

@@ -98,6 +98,11 @@ dependencies {
     /**
      * 至于库依赖声明这里没有用到，它的基本格式是implementation project后面加上要依赖的库的名称，
      * 比如有一个库模块的名字叫helper，
-     * 那么添加这个库的依赖关系只需要加入implementationproject(':helper')这句声明即可。
+     * 那么添加这个库的依赖关系只需要加入implementation(project(":helper"))这句声明即可。
      * */
+    implementation(project(":permissionx"))
+    implementation(project(":testlibrary"))
+
+    // 依赖aar包或jar包
+//    implementation(files("libs/test.jar"))
 }
